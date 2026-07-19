@@ -52,7 +52,7 @@ window.CATALOG_CATEGORIES = [
         nameEn: 'Batteries',
         descAr: 'بطاريات تخزين الطاقة الشمسية بمختلف أنواعها وتقنياتها.',
         descEn: 'Solar energy storage batteries of various types and technologies.',
-        image: 'assets/images/services/كابلات طلمبات الاعماق.webp'
+        image: 'assets/images/services/Industrial_battery_with_elnile_logo_202607192056.webp'
     },
 
     // ============ PUMPS & ACCESSORIES ============
@@ -413,7 +413,7 @@ window.CATALOG_PRODUCTS = [
         brand: 'Livoltek',
         nameAr: 'بطارية جل ديب سيكل 200 أمبير 12 فولت من Livoltek',
         nameEn: 'Livoltek 200Ah 12V Deep Cycle GEL Battery',
-        image: 'assets/images/services/كابلات طلمبات الاعماق.webp',
+        image: 'assets/images/services/Industrial_battery_with_elnile_logo_202607192056.webp',
         available: true,
         descAr: 'بطارية جل عميقة التفريغ من Livoltek، مصممة لتخزين طاقة الألواح الشمسية بأمان لفترات طويلة مع أقل معدل تفريغ ذاتي.',
         descEn: 'A deep-cycle GEL battery from Livoltek, designed to safely store solar energy for long periods with a minimal self-discharge rate.',
@@ -434,7 +434,7 @@ window.CATALOG_PRODUCTS = [
         brand: 'Livoltek',
         nameAr: 'بطارية جل ديب سيكل 100 أمبير 12 فولت من Livoltek',
         nameEn: 'Livoltek 100Ah 12V Deep Cycle GEL Battery',
-        image: 'assets/images/services/كابلات طلمبات الاعماق.webp',
+        image: 'assets/images/services/Industrial_battery_with_elnile_logo_202607192056.webp',
         available: true,
         descAr: 'نسخة أصغر من بطارية Livoltek GEL، مناسبة لأنظمة الطاقة الشمسية الصغيرة والمتوسطة في المزارع والمشاريع المنزلية.',
         descEn: 'A smaller version of the Livoltek GEL battery, suitable for small to medium solar systems in farms and home projects.',
@@ -455,7 +455,7 @@ window.CATALOG_PRODUCTS = [
         brand: 'Livoltek',
         nameAr: 'بطارية ليثيوم 100 أمبير 12 فولت من Livoltek',
         nameEn: 'Livoltek Lithium 100Ah 12V Battery',
-        image: 'assets/images/services/كابلات طلمبات الاعماق.webp',
+        image: 'assets/images/services/Industrial_battery_with_elnile_logo_202607192056.webp',
         available: true,
         descAr: 'بطارية ليثيوم خفيفة الوزن وعالية الكفاءة، بعمر تشغيلي أطول بكثير من بطاريات الرصاص الحمضي التقليدية.',
         descEn: 'A lightweight, high-efficiency lithium battery with a much longer operational life than traditional lead-acid batteries.',
