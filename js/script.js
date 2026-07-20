@@ -1,16 +1,64 @@
 /* ============================================
    ELNILE - Main JavaScript
-   Handles: Slider, Language Toggle, Mobile Menu, Header Scroll,
+   Handles: Cart Model, Slider, Language Toggle, Mobile Menu, Header Scroll,
             Stats Counter, Testimonials, Scroll Reveal
    ============================================ */
 
+/* ============ SHOPPING CART MODEL (persistent, shared) ============ */
+/* Stores line items [{ id, qty }] in localStorage so the cart page can
+   list actual products. The header badge is derived from these items. */
+window.ElnileCart = (() => {
+    const KEY = 'elnile_cart';
+
+    const read = () => {
+        try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+        catch (e) { return []; }
+    };
+
+    const syncBadge = (items) => {
+        const count = (items || read()).reduce((sum, i) => sum + i.qty, 0);
+        document.querySelectorAll('.cart-count').forEach(el => { el.textContent = count; });
+    };
+
+    const write = (items) => {
+        localStorage.setItem(KEY, JSON.stringify(items));
+        syncBadge(items);
+    };
+
+    return {
+        getItems: read,
+        getCount: () => read().reduce((sum, i) => sum + i.qty, 0),
+        addItem(id, qty = 1) {
+            const items = read();
+            const existing = items.find(i => i.id === id);
+            if (existing) existing.qty += qty;
+            else items.push({ id, qty });
+            write(items);
+        },
+        setQty(id, qty) {
+            let items = read();
+            if (qty <= 0) {
+                items = items.filter(i => i.id !== id);
+            } else {
+                const existing = items.find(i => i.id === id);
+                if (existing) existing.qty = qty;
+            }
+            write(items);
+        },
+        removeItem(id) { write(read().filter(i => i.id !== id)); },
+        clear() { write([]); },
+        syncBadge
+    };
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ============ CART COUNT (PERSISTENT) ============
-    const savedCartCount = parseInt(localStorage.getItem('elnile_cart_count') || '0', 10);
-    document.querySelectorAll('.cart-count').forEach(el => {
-        el.textContent = savedCartCount;
-    });
+    // ============ CART BADGE + BUTTON ============
+    window.ElnileCart.syncBadge();
+    const cartBtn = document.getElementById('cart-btn');
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => { window.location.href = 'cart.html'; });
+    }
 
     // ============ HEADER SCROLL EFFECT ============
     const header = document.getElementById('main-header');

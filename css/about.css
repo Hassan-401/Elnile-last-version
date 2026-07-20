@@ -425,6 +425,187 @@
 }
 
 
+/* ============ OUR TEAM ============ */
+.team-section {
+    padding: calc(var(--spacing-3xl) * 1.5) 0;
+    background: var(--color-white);
+}
+
+.team-section .section-title-center {
+    margin-bottom: var(--spacing-3xl);
+    text-align: center;
+}
+
+.team-carousel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.team-arrow {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-full);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+}
+
+.team-arrow:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--text-white);
+}
+
+.team-track {
+    display: flex;
+    gap: var(--spacing-xl);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    flex: 1;
+    padding: var(--spacing-sm) 2px;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.team-track::-webkit-scrollbar {
+    display: none;
+}
+
+.team-card {
+    flex: 0 0 calc((100% - var(--spacing-xl) * 2) / 3);
+    min-width: 220px;
+    scroll-snap-align: start;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(8, 145, 178, 0.2);
+}
+
+.team-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-full);
+    background: var(--color-gray-100);
+    border: 1px solid var(--color-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.team-card:hover .team-avatar {
+    background: rgba(8, 145, 178, 0.1);
+    border-color: rgba(8, 145, 178, 0.25);
+}
+
+.team-avatar i {
+    font-size: 1.5rem;
+    color: var(--color-gray-500);
+    transition: color var(--transition-base);
+}
+
+.team-card:hover .team-avatar i {
+    color: var(--color-accent);
+}
+
+.team-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.team-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+
+/* ============ CORE VALUES ============ */
+.values-section {
+    padding: calc(var(--spacing-3xl) * 1.5) 0;
+    background: var(--color-off-white);
+}
+
+.values-section .section-title-center {
+    margin-bottom: var(--spacing-3xl);
+    text-align: center;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+.value-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-full);
+    background: rgba(8, 145, 178, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.value-card:hover .value-icon {
+    background: var(--color-accent);
+    transform: scale(1.1);
+}
+
+.value-icon i {
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    transition: color var(--transition-base);
+}
+
+.value-card:hover .value-icon i {
+    color: var(--text-white);
+}
+
+.value-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.value-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+
 /* ============ ABOUT PAGE STATS (DARK) ============ */
 .about-stats-section {
     padding: calc(var(--spacing-3xl) * 1.5) 0;
@@ -543,6 +724,14 @@
     .about-stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .team-card {
+        flex: 0 0 calc((100% - var(--spacing-xl)) / 2);
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 640px) {
@@ -569,6 +758,14 @@
     }
 
     .distinguishes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-card {
+        flex: 0 0 100%;
+    }
+
+    .values-grid {
         grid-template-columns: 1fr;
     }
 

@@ -56,9 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
     handleAboutStatsAnimation();
 
 
+    // ============ TEAM CAROUSEL ============
+    const teamTrack = document.getElementById('team-track');
+    const teamPrev = document.getElementById('team-prev');
+    const teamNext = document.getElementById('team-next');
+
+    if (teamTrack && teamPrev && teamNext) {
+        const scrollTeam = (direction) => {
+            const card = teamTrack.querySelector('.team-card');
+            if (!card) return;
+            const gap = parseFloat(getComputedStyle(teamTrack).gap) || 0;
+            const step = card.offsetWidth + gap;
+            // In RTL, scrolling "forward" means a negative left offset
+            const isRTL = document.documentElement.dir === 'rtl';
+            teamTrack.scrollBy({
+                left: direction * step * (isRTL ? -1 : 1),
+                behavior: 'smooth'
+            });
+        };
+
+        teamNext.addEventListener('click', () => scrollTeam(1));
+        teamPrev.addEventListener('click', () => scrollTeam(-1));
+    }
+
+
     // ============ SCROLL REVEAL FOR ABOUT PAGE ============
     const revealElements = document.querySelectorAll(
-        '.about-welcome-image, .about-welcome-content, .license-card, .distinguish-card, .about-stat, .about-hero-content, .licenses-header'
+        '.about-welcome-image, .about-welcome-content, .license-card, .distinguish-card, .about-stat, .about-hero-content, .licenses-header, .team-card, .value-card'
     );
 
     revealElements.forEach(el => {

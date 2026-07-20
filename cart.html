@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="متجر توريدات النيل - اكتشف مجموعة منتجاتنا من الطلمبات، الأنظمة الشمسية، الكابلات، والملحقات التقنية عالية الجودة.">
-    <title>المتجر | النيل للمقاولات العامة وحفر الآبار</title>
+    <meta name="description" content="سلة المشتريات - النيل للمقاولات العامة وحفر الآبار.">
+    <title>سلة المشتريات | النيل للمقاولات العامة وحفر الآبار</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/store-catalog.css">
+    <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
 
@@ -56,14 +58,14 @@
         </div>
     </header>
 
-    <!-- ============ STORE HERO BANNER ============ -->
+    <!-- ============ CART HERO BANNER ============ -->
     <section class="store-hero">
         <div class="store-hero-bg"></div>
         <div class="container">
             <div class="store-hero-content">
-                <h1 class="store-hero-title" data-ar="متجر توريدات النيل" data-en="Elnile Supplies Store">متجر توريدات النيل</h1>
-                <p class="store-hero-subtitle" data-ar="اكتشف مجموعة منتجاتنا من الطلمبات، الأنظمة الشمسية، الكابلات، والملحقات التقنية عالية الجودة." data-en="Discover our range of products including pumps, solar systems, cables, and high-quality technical accessories.">
-                    اكتشف مجموعة منتجاتنا من الطلمبات، الأنظمة الشمسية، الكابلات، والملحقات التقنية عالية الجودة.
+                <h1 class="store-hero-title" data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h1>
+                <p class="store-hero-subtitle" data-ar="راجع المنتجات التي اخترتها واطلب عرض سعر مباشرة من النيل" data-en="Review the products you selected and request a quote directly from Elnile">
+                    راجع المنتجات التي اخترتها واطلب عرض سعر مباشرة من النيل
                 </p>
             </div>
         </div>
@@ -75,69 +77,73 @@
             <div class="breadcrumb-bar">
                 <a href="index.html"><i class="fas fa-home"></i></a>
                 <i class="fas fa-chevron-left breadcrumb-separator"></i>
-                <span data-ar="المتجر" data-en="Store">المتجر</span>
+                <a href="store.html" data-ar="المتجر" data-en="Store">المتجر</a>
+                <i class="fas fa-chevron-left breadcrumb-separator"></i>
+                <span data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</span>
             </div>
         </div>
     </div>
 
-    <!-- ============ CATEGORIES SECTION ============ -->
-    <section class="store-categories-section">
+    <!-- ============ CART SECTION ============ -->
+    <section class="cart-section">
         <div class="container">
-            <!-- Section Header -->
-            <div class="store-section-header">
-                <h2 class="store-section-title" data-ar="تصفح أقسام توريدات الآبار ومعدات الطاقة الشمسية" data-en="Browse Well Supplies & Solar Equipment Sections">تصفح أقسام توريدات الآبار ومعدات الطاقة الشمسية</h2>
-                <p class="store-section-subtitle" data-ar="اختر القسم المناسب لاحتياجاتك من مجموعة منتجاتنا المتنوعة" data-en="Choose the right section for your needs from our diverse range of products">
-                    اختر القسم المناسب لاحتياجاتك من مجموعة منتجاتنا المتنوعة
+
+            <!-- Cart with items -->
+            <div class="cart-layout" id="cart-layout" hidden>
+                <!-- Items column -->
+                <div class="cart-items-col">
+                    <div class="cart-items-header">
+                        <h2 class="cart-items-title" data-ar="منتجاتك" data-en="Your Items">منتجاتك</h2>
+                        <button class="cart-clear-btn" id="cart-clear-btn">
+                            <i class="fas fa-trash-alt"></i>
+                            <span data-ar="إفراغ السلة" data-en="Clear Cart">إفراغ السلة</span>
+                        </button>
+                    </div>
+                    <div class="cart-items-list" id="cart-items-list"></div>
+                </div>
+
+                <!-- Summary column -->
+                <aside class="cart-summary-col">
+                    <div class="cart-summary-card">
+                        <h3 class="cart-summary-title" data-ar="ملخص الطلب" data-en="Order Summary">ملخص الطلب</h3>
+                        <div class="cart-summary-row">
+                            <span data-ar="عدد الأصناف" data-en="Distinct Items">عدد الأصناف</span>
+                            <span id="summary-distinct">0</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span data-ar="إجمالي القطع" data-en="Total Quantity">إجمالي القطع</span>
+                            <span id="summary-total">0</span>
+                        </div>
+                        <div class="cart-summary-divider"></div>
+                        <div class="cart-summary-note">
+                            <i class="fas fa-info-circle"></i>
+                            <span data-ar="الأسعار تُحدد عند الطلب. اطلب عرض سعر وسيتواصل معك فريق النيل بأفضل الأسعار." data-en="Prices are set upon request. Request a quote and the Elnile team will contact you with the best prices.">الأسعار تُحدد عند الطلب. اطلب عرض سعر وسيتواصل معك فريق النيل بأفضل الأسعار.</span>
+                        </div>
+                        <a href="#" class="cart-quote-btn" id="cart-quote-btn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i>
+                            <span data-ar="اطلب عرض سعر" data-en="Request a Quote">اطلب عرض سعر</span>
+                        </a>
+                        <a href="store.html" class="cart-continue-btn">
+                            <i class="fas fa-arrow-right"></i>
+                            <span data-ar="متابعة التسوق" data-en="Continue Shopping">متابعة التسوق</span>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Empty cart state -->
+            <div class="cart-empty" id="cart-empty" hidden>
+                <div class="cart-empty-icon"><i class="fas fa-shopping-bag"></i></div>
+                <h2 class="cart-empty-title" data-ar="سلة المشتريات فارغة" data-en="Your Cart is Empty">سلة المشتريات فارغة</h2>
+                <p class="cart-empty-text" data-ar="لم تقم بإضافة أي منتجات إلى سلتك بعد. تصفح متجرنا واختر ما يناسب مشروعك." data-en="You haven't added any products to your cart yet. Browse our store and choose what suits your project.">
+                    لم تقم بإضافة أي منتجات إلى سلتك بعد. تصفح متجرنا واختر ما يناسب مشروعك.
                 </p>
+                <a href="store.html" class="cart-empty-btn">
+                    <span data-ar="تصفح المتجر" data-en="Browse Store">تصفح المتجر</span>
+                    <i class="fas fa-arrow-left"></i>
+                </a>
             </div>
 
-            <!-- Categories Grid -->
-            <div class="store-grid">
-                <!-- Card 1: Solar -->
-                <div class="store-card">
-                    <div class="store-card-image">
-                        <img src="assets/images/services/الواح الطاقه الشمسيه.webp" alt="قسم الطاقة الشمسية">
-                    </div>
-                    <div class="store-card-content">
-                        <h3 class="category-title" data-ar="قسم الطاقة الشمسية" data-en="Solar Energy Section">قسم الطاقة الشمسية</h3>
-                        <p class="category-desc" data-ar="الطاقة الشمسية ومشتملاتها" data-en="Solar energy and its components">الطاقة الشمسية ومشتملاتها</p>
-                        <a href="store-solar.html" class="btn-store-link">
-                            <span data-ar="تصفح المنتجات" data-en="Browse Products">تصفح المنتجات</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2: Pumps -->
-                <div class="store-card">
-                    <div class="store-card-image">
-                        <img src="assets/images/services/توريد طلمبات.webp" alt="قسم الطلمبات بمشتملاتها">
-                    </div>
-                    <div class="store-card-content">
-                        <h3 class="category-title" data-ar="قسم الطلمبات بمشتملاتها" data-en="Pumps & Accessories Section">قسم الطلمبات بمشتملاتها</h3>
-                        <p class="category-desc" data-ar="كل ما يتعلق بمشتملات طلمبات الاعماق" data-en="Everything related to deep pumps accessories">كل ما يتعلق بمشتملات طلمبات الاعماق</p>
-                        <a href="store-pumps.html" class="btn-store-link">
-                            <span data-ar="تصفح المنتجات" data-en="Browse Products">تصفح المنتجات</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 3: Pipes -->
-                <div class="store-card">
-                    <div class="store-card-image">
-                        <img src="assets/images/services/توريد مواسير.webp" alt="قسم مواسير الحديد والابار">
-                    </div>
-                    <div class="store-card-content">
-                        <h3 class="category-title" data-ar="قسم مواسير الحديد والابار" data-en="Iron & Well Pipes Section">قسم مواسير الحديد والابار</h3>
-                        <p class="category-desc" data-ar="كل ما يتعلق بمواسير الحفر ومواسير الطلمبات والسيلس" data-en="Everything related to drilling pipes, pump pipes, and seamless pipes">كل ما يتعلق بمواسير الحفر ومواسير الطلمبات والسيلس</p>
-                        <a href="store-ironpipes.html" class="btn-store-link">
-                            <span data-ar="تصفح المنتجات" data-en="Browse Products">تصفح المنتجات</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -233,6 +239,8 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script src="js/data/catalog-products.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

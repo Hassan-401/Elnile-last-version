@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const findProduct = (id) => (window.CATALOG_PRODUCTS || []).find(p => p.id === id);
     const findSection = (id) => (window.CATALOG_SECTIONS || []).find(s => s.id === id);
 
-    const bumpCartCount = (amount) => {
-        const current = parseInt(localStorage.getItem('elnile_cart_count') || '0', 10);
-        const next = Math.max(0, current + amount);
-        localStorage.setItem('elnile_cart_count', String(next));
-        document.querySelectorAll('.cart-count').forEach(el => { el.textContent = next; });
-    };
-
     /* ============================================
        LISTING PAGE
        ============================================ */
@@ -117,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             card.querySelector('.product-card-add-btn').addEventListener('click', (e) => {
                 e.stopPropagation();
-                bumpCartCount(1);
+                window.ElnileCart.addItem(product.id, 1);
             });
             return card;
         };
@@ -341,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add to cart
         addCartBtn.addEventListener('click', () => {
-            bumpCartCount(qty);
+            window.ElnileCart.addItem(product.id, qty);
             const label = addCartBtn.querySelector('span');
             const original = label.textContent;
             label.textContent = t('تمت الإضافة ✓', 'Added ✓');
